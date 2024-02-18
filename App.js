@@ -1,50 +1,38 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  Dimensions,
-  StyleSheet,
-  SafeAreaView,
-  Button,
-  Alert,
-  Platform,
-  View,
-} from "react-native";
-import { useWindowDimensions } from "react-native";
-import { useDeviceOrientation } from "@react-native-community/hooks";
+import { View } from "react-native";
 
 export default function App() {
-  // const orientation = () => {
-  //   let orientation;
-  //   const { height, width } = useWindowDimensions();
-  //   if (height > width) {
-  //     orientation = "portrait";
-  //     return orientation;
-  //   } else if (width > height) {
-  //     orientation = "landscape";
-  //     return orientation;
-  //   }
-  // };
-  // orientation();
-  const orientation = useDeviceOrientation();
-
   return (
-    <SafeAreaView style={styles.container}>
+    <View
+      style={{
+        backgroundColor: "#fff",
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <View
         style={{
           backgroundColor: "dodgerblue",
-          // width: orientation() === "landscape" ? "100%" : "30%",
-          height: orientation === "landscape" ? "110%" : "30%",
+          width: 100,
+          height: 300,
         }}
-      ></View>
-    </SafeAreaView>
+      />
+      <View
+        style={{
+          backgroundColor: "gold",
+          width: 100,
+          height: 200,
+        }}
+      />
+      <View
+        style={{
+          backgroundColor: "tomato",
+          width: 100,
+          height: 100,
+        }}
+      />
+    </View>
   );
 }
-const containerStyle = { backgroundColor: "orange" };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    // paddingTop: Platform.OS === "android" ? 20 : 0,
-    // alignItems: "center",
-    // justifyContent: "center",
-  },
-});
