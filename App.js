@@ -1,42 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import ViewImageScreen from "./app/screens/ViewImageScreen";
+import LoginButton from "./app/components/LoginButton";
+import AppButton from "./app/components/AppButton";
 
 export default function App() {
-  return (
-    <View
-      style={{
-        backgroundColor: "#fff",
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <View
-        style={{
-          backgroundColor: "dodgerblue",
-          width: 100,
-          height: 100,
-          top: 100,
-          left: 100,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "gold",
-          width: 100,
-          height: 100,
-          top: 50,
-          left: 50,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "tomato",
-          width: 100,
-          height: 100,
-        }}
-      />
-    </View>
-  );
+  return <WelcomeScreen />;
+
+  // <LoginButton />;
+  // <ViewImageScreen />;
 }
