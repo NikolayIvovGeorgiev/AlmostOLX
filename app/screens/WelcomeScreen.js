@@ -1,10 +1,6 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-
-import LoginButton from "../components/LoginButton";
-import RegisterButton from "../components/RegisterButton";
 import AppButton from "../components/AppButton";
-import App from "../../App";
 function WelcomeScreen(props) {
   return (
     <ImageBackground
