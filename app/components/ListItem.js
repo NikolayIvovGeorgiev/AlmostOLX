@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
 import AppText from "./AppText";
 import colors from "../config/colors";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function ListItem({
   title,
@@ -11,6 +12,7 @@ function ListItem({
   IconComponent,
   onPress,
   renderRightActions,
+  showChevrons,
 }) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
@@ -21,6 +23,15 @@ function ListItem({
           <View style={styles.detailContainer}>
             <AppText style={styles.title}>{title}</AppText>
             {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            {showChevrons && (
+              <View style={styles.chevron}>
+                <MaterialCommunityIcons
+                  name="chevron-double-right"
+                  color="black"
+                  size={30}
+                />
+              </View>
+            )}
           </View>
         </View>
       </TouchableHighlight>
@@ -35,6 +46,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: colors.white,
   },
+  chevron: {
+    position: "absolute",
+    right: 1,
+  },
   detailContainer: {
     marginLeft: 10,
     justifyContent: "center",
@@ -46,10 +61,11 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   subTitle: {
-    color: colors.medium,
+    color: colors.black,
   },
   title: {
     fontWeight: "700",
+    color: colors.black,
   },
 });
 

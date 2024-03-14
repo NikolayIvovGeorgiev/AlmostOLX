@@ -18,13 +18,40 @@ import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import { useState } from "react";
 import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
   const [category, setCategory] = useState();
 
+  const items = [
+    {
+      icon: "",
+      label: "1",
+      value: "sad",
+    },
+    {
+      icon: "",
+      label: "2",
+      value: "sasdaad",
+    },
+    {
+      icon: "",
+      label: "3",
+      value: "sa123123d",
+    },
+  ];
+
   return (
     <GestureHandlerRootView style={styles.outerLayer}>
-      <LoginScreen />
+      <Screen>
+        <ListItem
+          title="Niki G"
+          subTitle="react-native god"
+          image={require("./app/assets/NG.jpg")}
+          showChevrons={true}
+        />
+      </Screen>
     </GestureHandlerRootView>
   );
   // <GestureHandlerRootView>{<MessagesScreen />}</GestureHandlerRootView>;

@@ -6,21 +6,43 @@ import Screen from "../components/Screen";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password"),
+  name: Yup.string().required("Required"),
+  email: Yup.string()
+    .required("Required")
+    .email("Invalid email")
+    .label("Email"),
+  password: Yup.string().required("Required").min(4).label("Password"),
+  passwordConfirmation: Yup.string()
+    .required("Required")
+    .oneOf([Yup.ref("password"), undefined], "Passwords must match"),
 });
 
 function LoginScreen(props) {
+  // const [email, setEmail] = useState();
+  // const [password, setPassword] = useState();
+
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
       <AppForm
-        initialValues={{ email: "", password: "" }}
+        initialValues={{
+          email: "",
+          password: "",
+          passwordConfirmation: "",
+          name: "",
+        }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
         <AppFormField
-          name="email"
+          name="name"
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon={"baby-face"}
+          placeholder="Name"
+        />
+        <AppFormField
+          name="face"
           autoCapitalize="none"
           autoCorrect={false}
           icon={"email"}
@@ -37,7 +59,16 @@ function LoginScreen(props) {
           textContentType="password"
           secureTextEntry
         />
-        <SubmitButton title="Login" />
+        <AppFormField
+          name="passwordConfirmation"
+          autoCapitalize="none"
+          autoCorrect={false}
+          icon={"lock"}
+          placeholder="password Confirmation"
+          textContentType="password"
+          secureTextEntry
+        />
+        <SubmitButton title="Register" />
       </AppForm>
     </Screen>
   );
