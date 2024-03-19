@@ -3,12 +3,12 @@ import { Text } from "react-native";
 
 import defaultStyles from "../config/styles";
 
-function AppText({ children, style }) {
+function AppText({ children, style, ...otherProps }) {
   return (
     <Text
-      numberOfLines={2}
       ellipsizeMode="tail"
       style={[defaultStyles.text, style]}
+      {...otherProps}
     >
       {children}
     </Text>
