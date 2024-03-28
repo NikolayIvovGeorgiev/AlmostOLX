@@ -1,23 +1,33 @@
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
+import { Button, Image, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
 import Screen from "./app/components/Screen";
 import colors from "./app/config/colors";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ImageInputList from "./app/components/ImageInputList";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ImageInput from "./app/components/ImageInput";
 
 export default function App() {
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) alert("дай позволение бе");
+  const [imageUris, setImageUris] = useState([]);
+
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri]);
   };
-  useEffect(() => {
-    requestPermission();
-  }, []);
+  const handleRemove = (uri) => {
+    setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+  };
 
   return (
     <GestureHandlerRootView style={styles.outerLayer}>
-      <Screen></Screen>
+      <Screen>
+        <ImageInputList
+          imageUris={imageUris}
+          onAddImage={handleAdd}
+          onRemoveImage={handleRemove}
+        />
+      </Screen>
     </GestureHandlerRootView>
   );
 }
